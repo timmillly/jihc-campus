@@ -1,0 +1,53 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── USERS collection ──────────────────────────────────────────────────
+    // Users can only read/write their own document
+    match /users/{userId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null && request.auth.uid == userId;
+      allow update: if request.auth != null && request.auth.uid == userId;
+      allow delete: if false; // Users cannot delete their own account via client
+    }
+
+    // ── POSTS collection ──────────────────────────────────────────────────
+    // Any authenticated user can read all posts (real-time sync)
+    // Users can only create posts as themselves
+    // Users can only update/delete their own posts
+    match /posts/{postId} {
+      allow read: if request.auth != null;
+
+      allow create: if request.auth != null
+        && request.resource.data.authorId == request.auth.uid
+        && request.resource.data.title is string
+        && request.resource.data.title.size() > 0
+        && request.resource.data.description is string
+        && request.resource.data.description.size() > 0;
+
+      // Allow author to update any field; allow anyone to toggle likes
+      allow update: if request.auth != null && (
+        // Author can update everything
+        resource.data.authorId == request.auth.uid
+        ||
+        // Anyone can toggle their own like (only likedBy and likes change)
+        (
+          request.resource.data.diff(resource.data).affectedKeys()
+            .hasOnly(['likedBy', 'likes'])
+        )
+      );
+
+      allow delete: if request.auth != null
+        && resource.data.authorId == request.auth.uid;
+    }
+
+    // ── EVENTS collection (separate from posts) ───────────────────────────
+    match /events/{eventId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null
+        && request.resource.data.authorId == request.auth.uid;
+      allow update, delete: if request.auth != null
+        && resource.data.authorId == request.auth.uid;
+    }
+  }
+}

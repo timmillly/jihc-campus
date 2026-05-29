@@ -1,0 +1,48 @@
+{
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "jihc-campus",
+          "appId": "1:671589651622:android:be9377dbe686e377ce1067",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "jihc-campus",
+          "appId": "1:671589651622:ios:ec227cc179503b15ce1067",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "macos": {
+        "default": {
+          "projectId": "jihc-campus",
+          "appId": "1:671589651622:ios:ec227cc179503b15ce1067",
+          "uploadDebugSymbols": false,
+          "fileOutput": "macos/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "jihc-campus",
+          "configurations": {
+            "android": "1:671589651622:android:be9377dbe686e377ce1067",
+            "ios": "1:671589651622:ios:ec227cc179503b15ce1067",
+            "macos": "1:671589651622:ios:ec227cc179503b15ce1067",
+            "web": "1:671589651622:web:dc25482adefb9495ce1067",
+            "windows": "1:671589651622:web:c67d26376a4009f5ce1067"
+          }
+        }
+      }
+    }
+  }
+}
