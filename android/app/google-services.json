@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "671589651622",
+    "project_id": "jihc-campus",
+    "storage_bucket": "jihc-campus.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:671589651622:android:be9377dbe686e377ce1067",
+        "android_client_info": {
+          "package_name": "com.example.jihc_campus_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "671589651622-2ausmuvq92b3ocn8r3aleclm1a3cidv2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQgDdlHf-1o0wTszTA1O_SWxYo2XUhEZQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "671589651622-2ausmuvq92b3ocn8r3aleclm1a3cidv2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
